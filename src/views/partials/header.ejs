@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <% if (typeof faviconPath !== 'undefined') { %>
+    <link rel="icon" href="<%= faviconPath %>" type="image/x-icon">
+    <link rel="shortcut icon" href="<%= faviconPath %>" type="image/x-icon">
+  <% } else { %>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <% } %>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="<%= theme %>-theme">

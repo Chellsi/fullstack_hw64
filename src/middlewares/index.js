@@ -119,5 +119,9 @@ export function checkResourceExists(validIds) {
 export function attachUserToLocals(req, res, next) {
   res.locals.user = req.user || null;
   res.locals.theme = req.cookies.theme || 'light';
+
+  // Додаємо версію favicon для примусового оновлення після зміни файлу
+  res.locals.faviconPath = '/favicon.ico?v=1';
+
   next();
 }
