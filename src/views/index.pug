@@ -3,7 +3,7 @@ extends layout
 block content
   .hero
     h1.hero-title Ласкаво просимо до Express API
-    p.hero-subtitle Сучасний RESTful API з підтримкою шаблонізаторів PUG та EJS
+    p.hero-subtitle Сучасний RESTful API з підтримкою шаблонізаторів PUG та EJS, JWT авторизацією та темами оформлення
     
   .features
     .feature-card
@@ -20,6 +20,10 @@ block content
     
     .feature-card
       .feature-icon 🔒
-      h3 API Endpoints
-      p RESTful API з автентифікацією та валідацією
-      a.btn.btn-secondary(href='#') Документація API
+      h3 Авторизація
+      if user
+        p Ви увійшли як #{user.username}
+        a.btn.btn-primary(href='/auth/profile') Мій профіль
+      else
+        p JWT токени та безпечні cookies
+        a.btn.btn-secondary(href='/auth/login') Увійти

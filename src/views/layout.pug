@@ -4,8 +4,9 @@ html(lang='uk')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
+    link(rel='icon', href='/favicon.ico', type='image/x-icon')
     link(rel='stylesheet', href='/css/style.css')
-  body
+  body(class=theme + '-theme')
     header.header
       nav.nav
         .container
@@ -14,6 +15,13 @@ html(lang='uk')
           .nav-links
             a(href='/users/page') Користувачі
             a(href='/articles/page') Статті
+            if user
+              a(href='/auth/profile') 
+                span.user-avatar-small= user.username.charAt(0).toUpperCase()
+                | #{user.username}
+            else
+              a(href='/auth/login') Вхід
+              a.btn.btn-small.btn-primary(href='/auth/register') Реєстрація
     
     main.main
       .container

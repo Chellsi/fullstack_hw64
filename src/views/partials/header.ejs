@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="<%= theme %>-theme">
   <header class="header">
     <nav class="nav">
       <div class="container">
@@ -16,6 +17,15 @@
         <div class="nav-links">
           <a href="/users/page">Користувачі</a>
           <a href="/articles/page">Статті</a>
+          <% if (user) { %>
+            <a href="/auth/profile">
+              <span class="user-avatar-small"><%= user.username.charAt(0).toUpperCase() %></span>
+              <%= user.username %>
+            </a>
+          <% } else { %>
+            <a href="/auth/login">Вхід</a>
+            <a class="btn btn-small btn-primary" href="/auth/register">Реєстрація</a>
+          <% } %>
         </div>
       </div>
     </nav>
