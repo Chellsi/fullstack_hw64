@@ -20,10 +20,13 @@ html(lang='uk')
           .nav-links
             a(href='/users/page') Користувачі
             a(href='/articles/page') Статті
-            if user
-              a(href='/auth/profile') 
-                span.user-avatar-small= user.username.charAt(0).toUpperCase()
-                | #{user.username}
+            - const authDisplayName = user && (user.username || user.name || user.email)
+            if authDisplayName
+              - const authInitial = authDisplayName.charAt(0).toUpperCase()
+              a(href='/auth/profile')
+                if authInitial
+                  span.user-avatar-small= authInitial
+                | #{authDisplayName}
             else
               a(href='/auth/login') Вхід
               a.btn.btn-small.btn-primary(href='/auth/register') Реєстрація

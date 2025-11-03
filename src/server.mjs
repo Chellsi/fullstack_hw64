@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import ejs from 'ejs';
 import usersRouter from './routes/users.js';
 import articlesRouter from './routes/articles.js';
 import authRouter from './routes/auth.js';
@@ -18,16 +19,7 @@ const PORT = 3000;
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// Middleware для встановлення view engine залежно від маршруту
-app.use('/articles/page*', (req, res, next) => {
-  app.set('view engine', 'ejs');
-  next();
-});
-
-app.use('/users/page*', (req, res, next) => {
-  app.set('view engine', 'pug');
-  next();
-});
+app.engine('ejs', ejs.__express);
 
 // Middleware для парсингу JSON та cookies
 app.use(express.json());

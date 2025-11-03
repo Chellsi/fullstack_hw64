@@ -21,19 +21,19 @@ const users = [
   // Отримати користувача за ID (HTML сторінка)
   export const getUserByIdPage = (req, res) => {
     const { userId } = req.params;
-    const user = users.find(u => u.id === userId);
-    
-    if (!user) {
-      return res.status(404).render('error', { 
+    const selectedUser = users.find(u => u.id === userId);
+
+    if (!selectedUser) {
+      return res.status(404).render('error', {
         title: 'Помилка 404',
         message: 'Користувача не знайдено',
         error: { status: 404 }
       });
     }
-    
-    res.render('users/detail', { 
-      title: `Користувач: ${user.name}`,
-      user: user 
+
+    res.render('users/detail', {
+      title: `Користувач: ${selectedUser.name}`,
+      selectedUser
     });
   };
   

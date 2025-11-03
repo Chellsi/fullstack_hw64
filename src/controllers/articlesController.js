@@ -28,7 +28,7 @@ const articles = [
   
   // Отримати всі статті (HTML сторінка)
   export const getArticlesPage = (req, res) => {
-    res.render('articles/index', { 
+    res.render('articles/index.ejs', {
       title: 'Список статей',
       articles: articles 
     });
@@ -52,7 +52,7 @@ const articles = [
       });
     }
     
-    res.render('articles/detail', { 
+    res.render('articles/detail.ejs', {
       title: article.title,
       article: article 
     });

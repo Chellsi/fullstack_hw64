@@ -23,10 +23,14 @@
         <div class="nav-links">
           <a href="/users/page">Користувачі</a>
           <a href="/articles/page">Статті</a>
-          <% if (user) { %>
+          <% const authDisplayName = user && (user.username || user.name || user.email); %>
+          <% if (authDisplayName) { %>
+            <% const authInitial = authDisplayName.charAt(0).toUpperCase(); %>
             <a href="/auth/profile">
-              <span class="user-avatar-small"><%= user.username.charAt(0).toUpperCase() %></span>
-              <%= user.username %>
+              <% if (authInitial) { %>
+                <span class="user-avatar-small"><%= authInitial %></span>
+              <% } %>
+              <%= authDisplayName %>
             </a>
           <% } else { %>
             <a href="/auth/login">Вхід</a>
